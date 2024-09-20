@@ -9,6 +9,7 @@ import { computed, onMounted } from "vue";
 const page = computed(() => AppState.page)
 const totalPages = computed(() => AppState.totalPages)
 const posts = computed(() => AppState.posts)
+const ads = computed(() => AppState.ads)
 
 onMounted(() => {
   getAllPosts()
@@ -29,8 +30,10 @@ async function getAllPosts() {
 async function getAds() {
   try {
     await adsService.getAds()
+
   }
   catch (error) {
+    Pop.meow(error);
     Pop.error(error);
   }
 }
@@ -72,7 +75,7 @@ async function changePage(pageNumber) {
 
       <!-- Start of ads template -->
       <div class="col-4 card">
-        <h1>Ads</h1>
+        <h1>{{ ads }}</h1>
 
 
       </div>
