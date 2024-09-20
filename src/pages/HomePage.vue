@@ -5,7 +5,8 @@ import { logger } from "@/utils/Logger.js";
 import Pop from "@/utils/Pop.js";
 import { computed, onMounted } from "vue";
 
-
+const page = computed(() => AppState.page)
+const totalPages = computed(() => AppState.totalPages)
 const posts = computed(() => AppState.posts)
 
 onMounted(() => {
@@ -33,7 +34,7 @@ async function getAllPosts() {
     <section class="row">
       <div class="f-flex my-3">
         <button class="rounded-pill btn btn-primary">Previous</button>
-        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <span>Page {{ page }} of {{ totalPages }}</span>
         <button class="rounded-pill btn btn-primary">Next</button>
       </div>
       <!-- Start of posts template -->
