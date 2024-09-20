@@ -31,26 +31,18 @@ async function getAllPosts() {
 <template>
   <div class="container">
     <section class="row">
-      {{ posts }}
+
       <!-- Start of posts template -->
       <div v-for="post in posts" :key="post.id" class="col-md-8 mt-3">
-        <PostCard :postProp="Post" />
+        <PostCard :postProp="post" />
 
-        <!-- <div class="card w-100">
-          <img class=" creator-img" src="https://placehold.it/10x10" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Poster's Name</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum enim nostrum vero
-              repellendus, sit voluptatum.</p>
-            <a href="#" class="mdi mdi-heart ">Like</a>
-          </div>
-        </div> -->
 
 
       </div>
 
       <!-- Start of ads template -->
-      <div class="col-4">Ads
+      <div class="col-4">
+        Ads
 
 
       </div>

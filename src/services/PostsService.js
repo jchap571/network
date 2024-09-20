@@ -8,7 +8,7 @@ class PostsService {
   async getAllPosts() {
     const response = await api.get('api/posts')
     logger.log('Got the posts!', response.data)
-    const newPosts = response.data.posts
+    const newPosts = response.data.posts.map(postPOJO => new Post(postPOJO))
     AppState.posts = newPosts
 
 
