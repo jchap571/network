@@ -10,6 +10,10 @@ export const AppState = reactive({
   page: 0,
   totalPages: 0,
 
+
+  /** @type {import('./models/Account.js').Account} */
+  activeProfile: null,
+
   /**type {Post[]} */
   posts: []
 })

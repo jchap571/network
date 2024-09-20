@@ -41,8 +41,8 @@ async function getAllPosts() {
       </div>
 
       <!-- Start of ads template -->
-      <div class="col-4">
-        Ads
+      <div class="col-4 card">
+        <h1>Ads</h1>
 
 
       </div>
@@ -50,8 +50,4 @@ async function getAllPosts() {
   </div>
 </template>
 
-<style scoped lang="scss">
-.creator-img {
-  border-radius: 50%;
-}
-</style>
+<style scoped lang="scss"></style>
