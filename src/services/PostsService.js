@@ -25,6 +25,8 @@ class PostsService {
     logger.log('CHANGED POSTS PAGE', response.data)
 
     AppState.posts = newPosts
+    const newPostsPage = response.data.posts.map(postPOJO => new Post(postPOJO))
+    AppState.posts = newPostsPage
     AppState.page = response.data.page
     AppState.totalPages = response.data.totalPages
 
