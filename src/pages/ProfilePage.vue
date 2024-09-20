@@ -35,15 +35,33 @@ async function getProfileById(profileId) {
 
 
 <template>
+
+
   <h1>Profile Page</h1>
   <div class="container">
     <section class="row">
       <div class="col-12">
-        <h1>{{ profile }}</h1>
-
+        <h1>{{ profile.name }}</h1>
+        <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank" class="text-light"
+          title="Connect with me on LinkedIn!"> <i class="mdi mdi-linkedin"></i></a>
+        <div>
+          <img :src="profile.picture" :alt="profile.name">
+          <i v-if="profile.graduated" class="mdi mdi-certificate-outline fs-1"></i>
+        </div>
       </div>
     </section>
+
+    <div class="container">
+      <section class="row">
+        <p>{{ profile.bio }}</p>
+      </section>
+    </div>
   </div>
+
+
+
+
+
 </template>
 
 
