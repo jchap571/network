@@ -31,7 +31,11 @@ async function getAllPosts() {
 <template>
   <div class="container">
     <section class="row">
-
+      <div class="f-flex my-3">
+        <button class="rounded-pill btn btn-primary">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button class="rounded-pill btn btn-primary">Next</button>
+      </div>
       <!-- Start of posts template -->
       <div v-for="post in posts" :key="post.id" class="col-md-8 mt-3">
         <PostCard :postProp="post" />
