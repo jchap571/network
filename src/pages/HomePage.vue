@@ -74,11 +74,12 @@ async function changePage(pageNumber) {
       </div>
 
       <!-- Start of ads template -->
-      <div class="col-4 card">
-        <h1>{{ ads }}</h1>
-
-
+      <div class="d-flex align-items-start">
+        <div v-for="ad in ads" :key="ad.id" class="col-4 card">
+          <AdCard :adProp="ad" />
+        </div>
       </div>
+
     </section>
   </div>
 </template>
