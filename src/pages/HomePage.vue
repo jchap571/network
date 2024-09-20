@@ -89,6 +89,9 @@ async function changePage(pageNumber) {
 
     </section>
   </div>
+
+
+
 </template>
 
 <style scoped lang="scss"></style>
