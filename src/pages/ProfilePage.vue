@@ -19,13 +19,18 @@ onMounted(() => {
 
 async function getProfileById(profileId) {
   try {
-    await profilesService.getProfileById()
+    const profileId = route.params.profileId
+    logger.log('id of the profile from URL', profileId)
+    await profilesService.getProfileById(profileId)
   }
   catch (error) {
     Pop.error(error);
     logger.log(error)
   }
 }
+
+
+
 </script>
 
 
@@ -35,6 +40,7 @@ async function getProfileById(profileId) {
     <section class="row">
       <div class="col-12">
         <h1>{{ profile }}</h1>
+
       </div>
     </section>
   </div>

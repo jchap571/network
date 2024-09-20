@@ -42,7 +42,7 @@ function toggleTheme() {
     </div>
     <form action="">
       <input type="text" name="search" placeholder="Search for Posts">
-      <button class="btn btn-outline-primary text-light">Search</button>
+      <button class="btn btn-outline-dark text-light mx-3">Search</button>
     </form>
 
   </nav>
