@@ -15,7 +15,7 @@ const posts = computed(() => AppState.posts)
 
 onMounted(() => {
   getProfileById()
-  // getPostsByCreatorId()
+  getPostsByCreatorId()
 })
 
 
@@ -71,6 +71,13 @@ async function getPostsByCreatorId() {
       </section>
     </div>
   </div>
+
+  <section class="row mx-3">
+    <div v-for="post in posts" :key="post.id" class="col-md-4 my-3">
+      <PostCard :postProp="post" />
+    </div>
+
+  </section>
 
 
 
