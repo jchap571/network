@@ -39,5 +39,6 @@ defineProps({
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 5px;
+  box-shadow: 1px 1px 3px black;
 }
 </style>

@@ -6,6 +6,7 @@ import { AppState } from "@/AppState.js"
 
 class PostsService {
 
+
   async getAllPosts() {
     const response = await api.get('api/posts')
     logger.log('Got the posts!', response.data)
@@ -16,6 +17,14 @@ class PostsService {
     AppState.totalPages = response.data.totalPages
 
 
+  }
+
+  async getPostsByCreatorId(profileId) {
+    const response = await api.get(`api/posts?creatorId=${profileId}`)
+    logger.log('Got projects for the profile', response.data)
+
+    const newPosts = response.data.posts.map(postPOJO => new Post(postPOJO))
+    AppState.posts = newPosts
   }
 
 
