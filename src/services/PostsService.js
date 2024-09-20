@@ -5,12 +5,28 @@ import { AppState } from "@/AppState.js"
 
 
 class PostsService {
+
   async getAllPosts() {
     const response = await api.get('api/posts')
     logger.log('Got the posts!', response.data)
     const newPosts = response.data.posts.map(postPOJO => new Post(postPOJO))
     AppState.posts = newPosts
 
+    AppState.page = response.data.page
+    AppState.totalPages = response.data.totalPages
+
+
+  }
+
+
+  async changePostsPage(pageNumber) {
+    const response = await api.get(`/api/posts?page=${pageNumber}`)
+    const newPosts = response.data
+    logger.log('CHANGED POSTS PAGE', response.data)
+
+    AppState.posts = newPosts
+    AppState.page = response.data.page
+    AppState.totalPages = response.data.totalPages
 
   }
 

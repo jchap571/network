@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from "@/AppState.js";
+import { adsService } from "@/services/AdsService.js";
 import { postsService } from "@/services/PostsService.js";
 import { logger } from "@/utils/Logger.js";
 import Pop from "@/utils/Pop.js";
@@ -11,6 +12,7 @@ const posts = computed(() => AppState.posts)
 
 onMounted(() => {
   getAllPosts()
+  getAds()
 })
 
 
@@ -24,6 +26,26 @@ async function getAllPosts() {
   }
 }
 
+async function getAds() {
+  try {
+    await adsService.getAds()
+  }
+  catch (error) {
+    Pop.error(error);
+  }
+}
+
+async function changePage(pageNumber) {
+  try {
+    await postsService.changePostsPage(pageNumber)
+  }
+  catch (error) {
+    Pop.error(error);
+    Pop.meow(error)
+  }
+
+}
+
 
 
 
@@ -32,10 +54,13 @@ async function getAllPosts() {
 <template>
   <div class="container">
     <section class="row">
+      <!-- <PageNavigation /> -->
+
+      <!-- Page Navigation component template -->
       <div class="f-flex my-3">
-        <button class="rounded-pill btn btn-primary">Previous</button>
+        <button @click="changePage(page - 1)" class="rounded-pill btn btn-primary">Previous</button>
         <span>Page {{ page }} of {{ totalPages }}</span>
-        <button class="rounded-pill btn btn-primary">Next</button>
+        <button @click="changePage(page + 1)" class="rounded-pill btn btn-primary">Next</button>
       </div>
       <!-- Start of posts template -->
       <div v-for="post in posts" :key="post.id" class="col-md-8 mt-3">
