@@ -60,6 +60,9 @@ async function changePage(pageNumber) {
     <section class="row">
       <!-- <PageNavigation /> -->
 
+      <!-- Account form template -->
+
+
       <!-- Page Navigation component template -->
       <div class="f-flex my-3">
         <button @click="changePage(page - 1)" class="rounded-pill btn btn-primary mx-3">Previous</button>
