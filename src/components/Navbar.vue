@@ -19,8 +19,8 @@ function toggleTheme() {
 
 <template>
   <nav class="navbar navbar-expand-sm navbar-dark bg-primary px-3">
-    <h1><i class="mdi mdi-network text-light">Network</i></h1>
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+      <h1><i class="mdi mdi-network text-light">Network</i></h1>
       <div class="d-flex flex-column align-items-center">
 
       </div>
