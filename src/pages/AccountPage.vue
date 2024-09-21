@@ -18,6 +18,8 @@ const account = computed(() => AppState.account)
       <h1>Loading... <i class="mdi mdi-loading mdi-spin"></i></h1>
     </div>
   </div>
+
+  <PostForm />
 </template>
 
 <style scoped lang="scss">

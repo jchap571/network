@@ -24,15 +24,19 @@ defineProps({
       </router-link>
       <h5 class="card-title">{{ postProp.creatorName }}</h5>
       <p class="card-text fs-4">{{ postProp.body }}</p>
-      <div class="d-flex">
+      <div class="d-flex ">
         <p>{{ postProp.creatorUpdatedAt }}
           <img :src="postProp.imgUrl" :alt="postProp.creator" class="card-img-bottom img-fluid">
           <a href="#" class="mdi mdi-heart "></a>
         </p>
       </div>
-
+      <button class="flex-grow mb-3 bg-danger rounded" type="submit">Delete Post</button>
     </div>
   </div>
+
+
+
+
 </template>
 
 

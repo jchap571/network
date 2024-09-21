@@ -7,6 +7,7 @@ import { AppState } from "@/AppState.js"
 class PostsService {
 
 
+
   async getAllPosts() {
     const response = await api.get('api/posts')
     logger.log('Got the posts!', response.data)
@@ -39,6 +40,14 @@ class PostsService {
     AppState.page = response.data.page
     AppState.totalPages = response.data.totalPages
 
+  }
+
+
+  async createPost(postData) {
+    const response = await api.post('api/posts', postData)
+    logger.log('Creating a post!', response.data)
+    const newPost = new Post(response.data)
+    AppState.posts.push(newPost)
   }
 
 

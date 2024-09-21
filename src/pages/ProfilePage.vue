@@ -67,7 +67,7 @@ async function getPostsByCreatorId() {
         <div class="d-flex text-center justify-content-between">
           <img :src="profile.picture" :alt="profile.name" class="profile-image">
           <i v-if="profile.graduated" class="mdi mdi-certificate-outline fs-1 text-light"></i>
-          <i v-if="profile.creatorGitHub" class="mdi mdi-github"></i>
+          <i v-if="profile.github" class="mdi mdi-github"></i>
         </div>
       </div>
     </section>
