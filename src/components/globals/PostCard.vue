@@ -26,7 +26,7 @@ defineProps({
       <p class="card-text fs-4">{{ postProp.body }}</p>
       <div class="d-flex">
         <p>{{ postProp.creatorUpdatedAt }}
-          <img :src="postProp.imgUrl" :alt="postProp.title" class="card-img-bottom img-fluid">
+          <img :src="postProp.imgUrl" :alt="postProp.creator" class="card-img-bottom img-fluid">
           <a href="#" class="mdi mdi-heart "></a>
         </p>
       </div>

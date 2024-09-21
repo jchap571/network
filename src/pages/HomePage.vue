@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from "@/AppState.js";
+import { Account } from "@/models/Account";
 import { adsService } from "@/services/AdsService.js";
 import { postsService } from "@/services/PostsService.js";
 import { logger } from "@/utils/Logger.js";
@@ -10,7 +11,7 @@ const posts = computed(() => AppState.posts)
 const ads = computed(() => AppState.ads)
 const page = computed(() => AppState.page)
 const totalPages = computed(() => AppState.totalPages)
-
+const account = computed(() => AppState.account)
 
 
 onMounted(() => {
@@ -60,9 +61,9 @@ async function changePage(pageNumber) {
 <template>
   <div class="container">
     <section class="row">
-      <!-- <PageNavigation /> -->
 
-      <!-- Account form template -->
+
+
 
 
       <!-- Page Navigation component template -->
@@ -71,6 +72,25 @@ async function changePage(pageNumber) {
         <span>Page {{ page }} of {{ totalPages }}</span>
         <button @click="changePage(page + 1)" class="rounded-pill btn btn-primary mx-3">Next</button>
       </div>
+
+      <!-- Create post form -->
+
+      <PostForm />
+      <!-- <form v-if="account != null">
+        <div class="mb-3">
+          <label for="accountPicture" class="form-label">Body</label>
+          <input type="url" name="accountPicture" id="accountPicture" class="form-control" maxlength="500">
+        </div>
+        <div class="mb-3">
+          <label for="accountPicture" class="form-label">Picture</label>
+          <input type="url" name="accountPicture" id="accountPicture" class="form-control" maxlength="500">
+        </div>
+        <div>
+          <button class="flex-grow mb-3 bg-success" type="submit">Create Post</button>
+        </div>
+      </form> -->
+
+
 
 
 

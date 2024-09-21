@@ -17,7 +17,7 @@ export class Post {
     this.creatorClass = data.creator.class
     this.creatorGraduated = data.creator.graduated
     this.creatorCreateAt = data.creator.createdAt
-    this.creatorUpdatedAt = data.creator.updatedAt
+    this.creatorUpdatedAt = new Date(data.creator.updatedAt)
     this.likes = data.likes
     this.likeIds = data.likeIds
 
