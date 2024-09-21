@@ -11,8 +11,8 @@ export class Post {
     this.creatorName = data.creator.name
     this.creatorPicture = data.creator.picture
     this.creatorBio = data.creator.bio
-    this.creatorCoverImg = data.creator.coverImg
     this.creatorGitHub = data.creator.github
+    this.creatorCoverImg = data.creator.coverImg
     this.creatorLinkedin = data.creator.linkedin
     this.creatorClass = data.creator.class
     this.creatorGraduated = data.creator.graduated

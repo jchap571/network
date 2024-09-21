@@ -66,7 +66,7 @@ async function changePage(pageNumber) {
 
 
       <!-- Page Navigation component template -->
-      <div class="f-flex my-3">
+      <div class="d-flex my-3">
         <button @click="changePage(page - 1)" class="rounded-pill btn btn-primary mx-3">Previous</button>
         <span>Page {{ page }} of {{ totalPages }}</span>
         <button @click="changePage(page + 1)" class="rounded-pill btn btn-primary mx-3">Next</button>
@@ -74,8 +74,8 @@ async function changePage(pageNumber) {
 
 
 
-      <!-- Start of posts template -->
-      <div v-for="post in posts" :key="post.id" class="col-md-8 mt-3">
+      <!-- Start of posts PROP template -->
+      <div v-for="post in posts" :key="post.id" class="col-md-8 mt-2">
         <PostCard :postProp="post" />
 
 
