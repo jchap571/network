@@ -58,9 +58,11 @@ async function getPostsByCreatorId() {
         <h1 class="text-light">{{ profile.name }}</h1>
         <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank" class="text-light"
           title="Connect with me on LinkedIn!"> <i class="mdi mdi-linkedin"></i></a>
+        <p class="text-light">{{ profile.class }}</p>
         <div class="d-flex text-end">
           <img :src="profile.picture" :alt="profile.name" class="profile-image">
           <i v-if="profile.graduated" class="mdi mdi-certificate-outline fs-1 text-light"></i>
+          <i v-if="profile.creatorGitHub" class="mdi mdi-github"></i>
         </div>
       </div>
     </section>

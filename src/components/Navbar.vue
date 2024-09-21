@@ -30,7 +30,12 @@ function toggleTheme() {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-
+      <div class="d-flex justify-between">
+        <form action="">
+          <input type="text" name="search" placeholder="Search for Posts">
+          <button class="btn btn-outline-dark text-light mx-3">Search</button>
+        </form>
+      </div>
       <!-- LOGIN COMPONENT HERE -->
       <div>
         <button class="btn text-light" @click="toggleTheme"
@@ -40,10 +45,6 @@ function toggleTheme() {
       </div>
       <Login />
     </div>
-    <form action="">
-      <input type="text" name="search" placeholder="Search for Posts">
-      <button class="btn btn-outline-dark text-light mx-3">Search</button>
-    </form>
 
   </nav>
 </template>

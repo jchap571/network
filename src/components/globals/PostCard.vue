@@ -15,15 +15,16 @@ defineProps({
   <div class="card post-card w-100 rounded">
 
     <div class="card-body">
-      <img :src="postProp.imgUrl" :alt="postProp.title" class="card-img-top">
+      <router-link :to="{ name: 'Profile', params: { profileId: postProp.creatorId } }"
+        :title="`Go to ${postProp.creatorName}'s Profile Page! They have ${postProp.imgUrl.length} on their page!`"
+        class="fs-1">
+        <img class="img-fluid creator-img" :src="postProp.creatorPicture" alt="">
+      </router-link>
       <h5 class="card-title">{{ postProp.creatorName }}</h5>
       <p class="card-text fs-4">{{ postProp.body }}</p>
       <div class="d-flex">
-        <router-link :to="{ name: 'Profile', params: { profileId: postProp.creatorId } }"
-          :title="`Go to ${postProp.creatorName}'s Profile Page!`" class="fs-1">
-          <img class="img-fluid creator-img" :src="postProp.creatorPicture" alt="">
-        </router-link>
         <p>{{ postProp.creatorUpdatedAt }}
+          <img :src="postProp.imgUrl" :alt="postProp.title" class="card-img-bottom img-fluid">
           <a href="#" class="mdi mdi-heart "></a>
         </p>
       </div>
@@ -36,6 +37,7 @@ defineProps({
 <style lang="scss" scoped>
 img {
   height: 35dvh;
+
   object-fit: cover;
   object-position: center;
 }
@@ -47,6 +49,10 @@ img {
   height: 15dvh;
   aspect-ratio: 1/1;
 
+}
+
+.card-img-bottom {
+  min-width: 100%;
 }
 
 

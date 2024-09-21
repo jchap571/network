@@ -1,9 +1,6 @@
 <script setup>
 import { ref } from "vue";
 
-
-
-
 const editableAccountData = ref({
   name: '',
   picture: '',
@@ -15,7 +12,6 @@ const editableAccountData = ref({
 
 })
 </script>
-
 
 <template>
 
@@ -32,7 +28,7 @@ const editableAccountData = ref({
         class="form-control" maxlength="500">
     </div>
     <div class="mb-3">
-      <label for="accountCoverImg" class="form-label">Account CoverImg</label>
+      <label for="accountCoverImg" class="form-label">Account Cover Image</label>
       <input v-model="editableAccountData.coverImg" type="url" name="accountCoverImg" id="accountCoverImg"
         class="form-control" maxlength="500">
     </div>

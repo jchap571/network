@@ -21,6 +21,7 @@ export class Post {
     this.likes = data.likes
     this.likeIds = data.likeIds
 
+
   }
 }
 
