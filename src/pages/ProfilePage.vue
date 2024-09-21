@@ -13,10 +13,10 @@ const route = useRoute()
 const profile = computed(() => AppState.activeProfile)
 const posts = computed(() => AppState.posts)
 
-// onMounted(() => {
-//   getProfileById()
-//   getPostsByCreatorId()
-// })
+onMounted(() => {
+  getProfileById()
+  getPostsByCreatorId()
+})
 
 watch(() => route.params.profileId, () => {
   getProfileById()
