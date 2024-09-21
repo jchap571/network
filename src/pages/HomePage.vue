@@ -6,10 +6,12 @@ import { logger } from "@/utils/Logger.js";
 import Pop from "@/utils/Pop.js";
 import { computed, onMounted } from "vue";
 
-const page = computed(() => AppState.page)
-const totalPages = computed(() => AppState.totalPages)
 const posts = computed(() => AppState.posts)
 const ads = computed(() => AppState.ads)
+const page = computed(() => AppState.page)
+const totalPages = computed(() => AppState.totalPages)
+
+
 
 onMounted(() => {
   getAllPosts()
