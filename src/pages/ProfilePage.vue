@@ -53,13 +53,13 @@ async function getPostsByCreatorId() {
 
 
   <div v-if="profile" class="container">
-    <section class="row my-3 img-fluid" :style="{ backgroundImage: `url(${profile.coverImg})` }">
-      <div class="col-12 d-flex justify-between my-3 mx-3 profile-backdrop">
+    <section class="row my-3 img-fluid coverImgBg" :style="{ backgroundImage: `url(${profile.coverImg})` }">
+      <div class="col-12 d-flex justify-content-around my-3 mx-3 profile-backdrop">
         <h1 class="text-light">{{ profile.name }}</h1>
         <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank" class="text-light"
-          title="Connect with me on LinkedIn!"> <i class="mdi mdi-linkedin"></i></a>
-        <p class="text-light">{{ profile.class }}</p>
-        <div class="d-flex text-end">
+          title="Connect with me on LinkedIn!"> <i class="mdi mdi-linkedin fs-2"></i></a>
+        <p class="text-light fs-2">{{ profile.class }}</p>
+        <div class="d-flex text-center justify-content-between">
           <img :src="profile.picture" :alt="profile.name" class="profile-image">
           <i v-if="profile.graduated" class="mdi mdi-certificate-outline fs-1 text-light"></i>
           <i v-if="profile.creatorGitHub" class="mdi mdi-github"></i>
@@ -89,11 +89,19 @@ async function getPostsByCreatorId() {
 
 
 <style lang="scss" scoped>
-.profile-image {
+img {
   border-radius: 50%;
+  min-height: 20dvh;
   aspect-ratio: 1/1;
   box-shadow: 1px 1px 5px black;
   object-fit: cover;
+
+}
+
+
+.coverImgBg {
+  min-height: 60dvh;
+  background-size: cover;
 
 }
 </style>
