@@ -1,5 +1,9 @@
 <script setup>
+import { accountService } from "@/services/AccountService";
+import { logger } from "@/utils/Logger";
+import Pop from "@/utils/Pop";
 import { ref } from "vue";
+
 
 const editableAccountData = ref({
   name: '',
@@ -9,18 +13,28 @@ const editableAccountData = ref({
   coverImg: '',
   linkedIn: '',
   graduated: false,
-  github: '',
-  class: '',
-
 
 
 })
+
+async function updateAccount() {
+  try {
+    await accountService.updateAccount(editableAccountData.value)
+
+  }
+  catch (error) {
+    Pop.meow(error)
+    logger.error(error)
+  }
+}
+
+
 </script>
 
 <template>
 
 
-  <form>
+  <form @submit.prevent="updateAccount()">
     <div class="mb-3">
       <label for="accountName" class="form-label">Account Name</label>
       <input required v-model="editableAccountData.name" type="text" name="accountName" id="accountName"
