@@ -1,26 +1,31 @@
 <script setup>
+import { AppState } from "@/AppState";
 import { accountService } from "@/services/AccountService";
 import { logger } from "@/utils/Logger";
 import Pop from "@/utils/Pop";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 
 const editableAccountData = ref({
   name: '',
   picture: '',
-  email: '',
   bio: '',
   coverImg: '',
-  linkedIn: '',
+  linkedin: '',
   graduated: false,
 
 
 })
 
+
+onMounted(() => {
+  editableAccountData.value = AppState.account
+})
+
 async function updateAccount() {
   try {
     await accountService.updateAccount(editableAccountData.value)
-
+    Pop.success('Account details changed!')
   }
   catch (error) {
     Pop.meow(error)
@@ -37,8 +42,8 @@ async function updateAccount() {
   <form @submit.prevent="updateAccount()">
     <div class="mb-3">
       <label for="accountName" class="form-label">Account Name</label>
-      <input required v-model="editableAccountData.name" type="text" name="accountName" id="accountName"
-        class="form-control " maxlength="100">
+      <input v-model="editableAccountData.name" type="text" name="accountName" id="accountName" class="form-control "
+        maxlength="100">
     </div>
     <div class="mb-3">
       <label for="accountPicture" class="form-label">Picture</label>
@@ -52,14 +57,10 @@ async function updateAccount() {
     </div>
     <div class="mb-3">
       <label for="accountLinkedin" class="form-label">Linkedin</label>
-      <input v-model="editableAccountData.linkedIn" type="url" name="accountLinkedin" id="accountLinkedin"
+      <input v-model="editableAccountData.linkedin" type="url" name="accountLinkedin" id="accountLinkedin"
         class="form-control" maxlength="500">
     </div>
-    <div class="mb-3">
-      <label for="accountGithub" class="form-label">Github</label>
-      <input v-model="editableAccountData.github" type="url" name="accountGithub" id="accountGithub"
-        class="form-control" maxlength="500">
-    </div>
+
     <div class="mb-3">
       <label for="accountBio" class="form-label">Bio</label>
       <textarea v-model="editableAccountData.bio" name="accountBio" id="accountBio" class="form-control"
