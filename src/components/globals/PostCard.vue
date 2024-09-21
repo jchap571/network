@@ -30,7 +30,9 @@ defineProps({
 <style lang="scss" scoped>
 .creator-img {
   border-radius: 50%;
-
+  height: 35dvh;
+  object-fit: cover;
+  object-position: center;
   aspect-ratio: 1/1;
 }
 
