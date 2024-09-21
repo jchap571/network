@@ -1,12 +1,14 @@
 <script setup>
 
 
+import { AppState } from "@/AppState";
 import { Post } from "@/models/Post.js";
 import { postsService } from "@/services/PostsService";
 import { logger } from "@/utils/Logger";
 import Pop from "@/utils/Pop";
+import { computed } from "vue";
 
-
+const account = computed(() => AppState.account)
 
 const props = defineProps({
   postProp: { type: Post, required: true }
@@ -50,7 +52,7 @@ async function deletePost() {
           <a href="#" class="mdi mdi-heart "></a>
         </p>
       </div>
-      <button @click="deletePost()" v-if="postProp.creator.id" class="flex-grow mb-3 bg-danger rounded"
+      <button @click="deletePost()" v-if="postProp.creatorId == account.id" class="flex-grow mb-3 bg-danger rounded"
         type="submit">Delete
         Post</button>
     </div>
