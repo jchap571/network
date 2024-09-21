@@ -2,12 +2,32 @@
 
 
 import { Post } from "@/models/Post.js";
+import { postsService } from "@/services/PostsService";
+import { logger } from "@/utils/Logger";
+import Pop from "@/utils/Pop";
 
 
 
-defineProps({
+const props = defineProps({
   postProp: { type: Post, required: true }
 })
+
+async function deletePost() {
+  try {
+    const wantsToDelete = await Pop.confirm('Are you sure you want to delete this post?')
+    if (!wantsToDelete) {
+      return
+    }
+    logger.log('post id', props.postProp.id)
+    await postsService.deletePost(props.postProp.id)
+
+    console.log('deleting post')
+  }
+  catch (error) {
+    Pop.meow(error)
+    Pop.error(error);
+  }
+}
 
 
 </script>
@@ -30,7 +50,9 @@ defineProps({
           <a href="#" class="mdi mdi-heart "></a>
         </p>
       </div>
-      <button class="flex-grow mb-3 bg-danger rounded" type="submit">Delete Post</button>
+      <button @click="deletePost()" v-if="postProp.creator.id" class="flex-grow mb-3 bg-danger rounded"
+        type="submit">Delete
+        Post</button>
     </div>
   </div>
 
