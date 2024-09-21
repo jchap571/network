@@ -4,7 +4,7 @@ import { postsService } from "@/services/PostsService.js";
 import { profilesService } from "@/services/ProfilesService.js";
 import { logger } from "@/utils/Logger.js";
 import Pop from "@/utils/Pop.js";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 
 
@@ -13,7 +13,12 @@ const route = useRoute()
 const profile = computed(() => AppState.activeProfile)
 const posts = computed(() => AppState.posts)
 
-onMounted(() => {
+// onMounted(() => {
+//   getProfileById()
+//   getPostsByCreatorId()
+// })
+
+watch(() => route.params.profileId, () => {
   getProfileById()
   getPostsByCreatorId()
 })
