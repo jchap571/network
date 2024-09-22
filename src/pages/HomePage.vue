@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from "@/AppState.js";
+
 import { Account } from "@/models/Account";
 import { adsService } from "@/services/AdsService.js";
 import { postsService } from "@/services/PostsService.js";
@@ -67,6 +68,7 @@ async function changePage(pageNumber) {
 
 
       <!-- Page Navigation component template -->
+
       <div class="d-flex my-3">
         <button @click="changePage(page - 1)" class="rounded-pill btn btn-primary mx-3">Previous</button>
         <span>Page {{ page }} of {{ totalPages }}</span>

@@ -2,6 +2,7 @@ import { logger } from "@/utils/Logger.js"
 import { api } from "./AxiosService.js"
 import { Post } from "@/models/Post.js"
 import { AppState } from "@/AppState.js"
+import Pop from "@/utils/Pop.js"
 
 
 class PostsService {
@@ -13,7 +14,14 @@ class PostsService {
     const response = await api.get('api/posts')
     logger.log('Got the posts!', response.data)
     const newPosts = response.data.posts.map(postPOJO => new Post(postPOJO))
-    AppState.posts = newPosts
+    try {
+      AppState.posts = newPosts
+
+    }
+    catch (error) {
+      console.log(error)
+      Pop.error(error);
+    }
 
     AppState.page = response.data.page
     AppState.totalPages = response.data.totalPages

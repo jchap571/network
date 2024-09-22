@@ -1,17 +1,32 @@
 <script setup>
 
 
-import { AppState } from "@/AppState";
+import { AppState } from '../../AppState.js';
 import { Post } from "@/models/Post.js";
 import { postsService } from "@/services/PostsService";
 import { logger } from "@/utils/Logger";
 import Pop from "@/utils/Pop";
-import { computed } from "vue";
+import { computed, onMounted, watch } from "vue";
 
+
+// NOTE something about the way the account is computed is breaking my v-if on the delete button
 const account = computed(() => AppState.account)
+
+// watch(() => AppState.account, (newValue) => {
+//   console.log("Account changed:", newValue);
+// })
+
 
 const props = defineProps({
   postProp: { type: Post, required: true }
+})
+
+
+
+
+onMounted(() => {
+  console.log("Account ID:", account);
+  console.log("Creator ID:", props.postProp.creatorId);
 })
 
 async function deletePost() {
@@ -52,8 +67,9 @@ async function deletePost() {
           <a href="#" class="mdi mdi-heart "></a>
         </p>
       </div>
-      <button @click="deletePost()" v-if="postProp.creatorId == account.id" class="flex-grow mb-3 bg-danger rounded"
-        type="submit">Delete
+
+      <button v-if="account && postProp.creatorId === account.id" @click="deletePost()"
+        class="flex-grow mb-3 bg-danger rounded" type="submit">Delete
         Post</button>
     </div>
   </div>

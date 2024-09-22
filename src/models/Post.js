@@ -7,7 +7,7 @@ export class Post {
     this.updatedAt = new Date(data.updatedAt)
     this.creator = data.creator
     this.creatorEmail = data.creator.email
-    this.creatorId = data.creator.id
+
     this.creatorName = data.creator.name
     this.creatorPicture = data.creator.picture
     this.creatorBio = data.creator.bio
