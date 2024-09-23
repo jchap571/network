@@ -70,6 +70,7 @@ async function updateAccount() {
       <label for="accountGraduated" class="form-label me-3">Have You Graduated?</label>
       <input v-model="editableAccountData.graduated" type="checkbox" name="accountGraduated" id="accountGraduated">
     </div>
+    <!-- FIXME add inputs for github and class -->
     <div>
       <button class="flex-grow mb-3 bg-success" type="submit">Save Changes</button>
     </div>

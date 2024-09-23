@@ -10,13 +10,13 @@ class PostsService {
 
 
 
+
   async getAllPosts() {
     const response = await api.get('api/posts')
     logger.log('Got the posts!', response.data)
     const newPosts = response.data.posts.map(postPOJO => new Post(postPOJO))
     try {
       AppState.posts = newPosts
-
     }
     catch (error) {
       console.log(error)
@@ -28,6 +28,7 @@ class PostsService {
 
 
   }
+
 
   async getPostsByCreatorId(profileId) {
     const response = await api.get(`api/posts?creatorId=${profileId}`)
@@ -45,18 +46,20 @@ class PostsService {
     const response = await api.post('api/posts', postData)
     logger.log('Creating a post!', response.data)
     const newPost = new Post(response.data)
+    // FIXME look into using unshift instead of push
     AppState.posts.push(newPost)
   }
 
   async deletePost(postId) {
     const response = await api.delete(`api/posts/${postId}`)
     logger.log('Deleting the post!', response.data)
+    // FIXME look at findIndex conditional comparing postid's
     const postIndex = AppState.posts.findIndex(post => post.id == post.id)
     AppState.posts.splice(postIndex, 1)
 
   }
 
-
+  // Need a new method for changePostsPageByProfileId needed
 
   async changePostsPage(pageNumber, postQuery) {
     const response = await api.get(`/api/posts?page=${pageNumber}`)
@@ -71,6 +74,20 @@ class PostsService {
     AppState.totalPages = response.data.totalPages
 
   }
+
+  clearPosts() {
+    AppState.posts = []
+    AppState.page = 0
+    AppState.totalPages = 0
+  }
+
+
+  // async searchPosts(postQuery) {
+  //   const response = await api.get(`search/posts?query=${postQuery}`)
+  //   logger.log('searching posts', response.data)
+  //   AppState.postQuery = postQuery
+  //   this.handleResponseData(response.data)
+  // }
 
 
 

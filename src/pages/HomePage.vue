@@ -7,7 +7,7 @@ import { adsService } from "@/services/AdsService.js";
 import { postsService } from "@/services/PostsService.js";
 import { logger } from "@/utils/Logger.js";
 import Pop from "@/utils/Pop.js";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, onUnmounted } from "vue";
 
 const posts = computed(() => AppState.posts)
 const ads = computed(() => AppState.ads)
@@ -19,6 +19,10 @@ onMounted(() => {
   getAllPosts()
   getAds()
 
+})
+
+onUnmounted(() => {
+  postsService.clearPosts()
 })
 
 

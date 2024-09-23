@@ -1,7 +1,7 @@
 <script setup>
 import Navbar from './components/Navbar.vue';
 import { AppState } from './AppState.js';
-
+// FIXME add get ads here so that will fix it everywhere
 </script>
 
 <template>

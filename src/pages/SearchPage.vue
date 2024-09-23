@@ -1,5 +1,6 @@
 <script setup>
-
+// FIXME reference search page from vue flix - just search by posts
+// FIXME get ads here
 </script>
 
 

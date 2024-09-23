@@ -17,6 +17,8 @@ const posts = computed(() => AppState.posts)
 onMounted(() => {
   getProfileById()
   getPostsByCreatorId()
+  // FIXME get ads here
+
 })
 
 watch(() => route.params.profileId, () => {
@@ -62,12 +64,14 @@ async function getPostsByCreatorId() {
     <section class="row my-3 img-fluid coverImgBg" :style="{ backgroundImage: `url(${profile.coverImg})` }">
       <div class="col-12 d-flex justify-content-around my-3 mx-3 profile-backdrop">
         <h1 class="text-light">{{ profile.name }}</h1>
+        <!-- do the same as below -->
         <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank" class="text-light"
           title="Connect with me on LinkedIn!"> <i class="mdi mdi-linkedin fs-2"></i></a>
         <p class="text-light fs-2">{{ profile.class }}</p>
         <div class="d-flex text-center justify-content-between">
           <img :src="profile.picture" :alt="profile.name" class="profile-image">
           <i v-if="profile.graduated" class="mdi mdi-certificate-outline fs-1 text-light"></i>
+          <!-- FIXME add link for github-->
           <i v-if="profile.github" class="mdi mdi-github"></i>
         </div>
       </div>

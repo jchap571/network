@@ -18,6 +18,8 @@ const totalPages = computed(() => AppState.totalPages)
 
 async function changePostsPage(pageNumber) {
     try {
+        // need to check which page I'm on - ie. profile page or home page
+        // FIXME reference projectCard from art terminal inside template, look for the v-if
         if (AppState.postQuery == '') {
             await postsService.changePostsPage(pageNumber)
         }
