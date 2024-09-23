@@ -1,8 +1,9 @@
 <script setup>
 import { AppState } from '@/AppState';
 import { adsService } from '@/services/AdsService';
+import { postsService } from '@/services/PostsService';
 import Pop from '@/utils/Pop';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 
 // FIXME reference search page from vue flix - just search by posts
 
@@ -11,9 +12,24 @@ const ads = computed(() => AppState.ads)
 
 const posts = computed(() => AppState.posts)
 
+const editableQuery = ref('')
+
 onMounted(() => {
     getAds()
 })
+
+onUnmounted(() => {
+    postsService.clearSearchQuery()
+})
+
+async function searchPosts() {
+    try {
+        await postsService.searchPosts(editableQuery.value)
+    }
+    catch (error) {
+        Pop.error(error);
+    }
+}
 
 
 
@@ -34,6 +50,21 @@ async function getAds() {
 
 <template>
     <h1>Search Page</h1>
+    <div class="card">
+        <form @submit.prevent="searchPosts()">
+            <div class="mb-3">
+                <label for="searchPosts" class="form-control-label">Search Posts</label>
+                <input v-model="editableQuery" type="text" name="searchPosts" id="searchPosts" class="form-control"
+                    maxlength="100" required>
+            </div>
+            <div>
+                <button class="flex-grow mb-3 bg-success rounded" type="submit">Search Posts</button>
+            </div>
+        </form>
+    </div>
+
+
+
 
     <div class="container">
         <section class="row">
