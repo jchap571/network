@@ -7,7 +7,7 @@ import { computed, ref } from 'vue';
 
 const posts = computed(() => AppState.posts)
 const account = computed(() => AppState.account)
-// const creatorId = computed(()=> AppState.activeProfile.)
+
 
 const editablePostData = ref({
     body: '',

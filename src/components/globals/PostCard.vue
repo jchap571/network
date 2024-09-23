@@ -65,7 +65,7 @@ async function deletePost() {
       <div class="d-flex ">
         <p>{{ postProp.createdAt }}
           <img :src="postProp.imgUrl" :alt="postProp.creator" class="card-img-bottom img-fluid">
-          <a href="#" class="mdi mdi-heart "></a>
+          <a href="#" class="mdi mdi-heart ">{{ postProp.likes.length }}</a>
         </p>
       </div>
 

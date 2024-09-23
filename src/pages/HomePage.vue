@@ -84,7 +84,7 @@ async function getAds() {
       </div>
 
       <!-- Start of ads template -->
-      <div class="d-flex align-items-start col-md-4 flex-column align-items-start">
+      <div class="d-flex align-items-start col-md-4 flex-column">
         <div v-for="ad in ads" :key="ad.id" class="col-4 card">
           <AdCard :adProp="ad" />
         </div>
