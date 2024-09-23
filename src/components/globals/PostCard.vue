@@ -71,19 +71,19 @@ async function likePosts() {
 
     <div class="card-body">
       <router-link :to="{ name: 'Profile', params: { profileId: postProp.creatorId } }"
-        :title="`Go to ${postProp.creatorName}'s Profile Page! `" class="fs-1">
+        :title="`Go to ${postProp.creatorName}'s Profile Page!`" class="fs-1">
         <img class="img-fluid creator-img" :src="postProp.creatorPicture" alt="">
       </router-link>
       <h5 class="card-title">{{ postProp.creatorName }}</h5>
       <p class="card-text fs-4">{{ postProp.body }}</p>
       <div class="">
 
-        <p>{{ postProp.formattedCreatedAt }}
+        <p>Posted on: {{ postProp.formattedCreatedAt }}
         </p>
 
         <img v-if="postProp.imgUrl" :src="postProp.imgUrl" :alt="postProp.body" class="card-img-bottom img-fluid">
-        <!-- FIXME don't use a tags for likes, send the id of the post you want to like (formatted correctly) in the service, look at the endpoint needed to hit for likes  -->
-        <button v-if="account" @click="likePosts()" class="mdi mdi-heart mb-3">{{ postProp.likes.length }}</button>
+
+        <button v-if="account" @click="likePosts()" class="mdi mdi-heart mb-3 mx-2">{{ postProp.likes.length }}</button>
       </div>
 
       <button v-if="account && postProp.creatorId === account.id" @click="deletePost()"
