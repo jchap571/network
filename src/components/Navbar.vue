@@ -22,7 +22,12 @@ function toggleTheme() {
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <h1><i class="mdi mdi-network text-light">Network</i></h1>
       <div class="d-flex flex-column align-items-center">
-
+        <li>
+          <!-- Search component here -->
+          <router-link :to="{ name: 'Search' }" class="btn text-light lighten-30 selectable text-uppercase">
+            Search <i class="mdi mdi-magnify"></i>
+          </router-link>
+        </li>
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"

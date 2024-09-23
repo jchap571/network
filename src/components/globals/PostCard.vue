@@ -17,6 +17,7 @@ const account = computed(() => AppState.account)
 // })
 
 
+
 const props = defineProps({
   postProp: { type: Post, required: true }
 })
@@ -62,7 +63,7 @@ async function deletePost() {
       <h5 class="card-title">{{ postProp.creatorName }}</h5>
       <p class="card-text fs-4">{{ postProp.body }}</p>
       <div class="d-flex ">
-        <p>{{ postProp.creatorUpdatedAt }}
+        <p>{{ postProp.createdAt }}
           <img :src="postProp.imgUrl" :alt="postProp.creator" class="card-img-bottom img-fluid">
           <a href="#" class="mdi mdi-heart "></a>
         </p>
