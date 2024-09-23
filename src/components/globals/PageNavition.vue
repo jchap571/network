@@ -4,11 +4,12 @@ import { postsService } from '@/services/PostsService';
 import Pop from '@/utils/Pop';
 
 import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 
 
 
-
+const route = useRoute()
 
 const page = computed(() => AppState.page)
 const totalPages = computed(() => AppState.totalPages)
@@ -39,7 +40,7 @@ async function changePostsPage(pageNumber) {
 
 <template>
     <div class="d-flex my-3">
-        <button @click="changePostsPage(page - 1)" :disabled="page < 2"
+        <button v-if="route.name == 'Home'" @click="changePostsPage(page - 1)" :disabled="page < 2"
             class="rounded-pill btn btn-primary mx-3">Previous</button>
         <span>Page {{ page }} of {{ totalPages }}</span>
         <button @click="changePostsPage(page + 1)" :disabled="page == 40 || page == totalPages"

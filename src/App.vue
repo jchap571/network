@@ -3,7 +3,7 @@ import Navbar from './components/Navbar.vue';
 import { AppState } from './AppState.js';
 import Pop from './utils/Pop';
 import { adsService } from './services/AdsService';
-// FIXME add get ads here so that will fix it everywhere
+
 
 
 

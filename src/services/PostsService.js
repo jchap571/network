@@ -6,6 +6,9 @@ import Pop from "@/utils/Pop.js"
 
 
 class PostsService {
+  likePosts() {
+    throw new Error("Method not implemented.")
+  }
 
 
 
@@ -47,14 +50,14 @@ class PostsService {
     logger.log('Creating a post!', response.data)
     const newPost = new Post(response.data)
     // FIXME look into using unshift instead of push
-    AppState.posts.push(newPost)
+    AppState.posts.unshift(newPost)
   }
 
   async deletePost(postId) {
     const response = await api.delete(`api/posts/${postId}`)
     logger.log('Deleting the post!', response.data)
     // FIXME look at findIndex conditional comparing postid's
-    const postIndex = AppState.posts.findIndex(post => post.id == post.id)
+    const postIndex = AppState.posts.findIndex(post => post.id == postId)
     AppState.posts.splice(postIndex, 1)
 
   }

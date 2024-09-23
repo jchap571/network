@@ -78,7 +78,7 @@ async function getAds() {
     <section class="row my-3 img-fluid coverImgBg" :style="{ backgroundImage: `url(${profile.coverImg})` }">
       <div class="col-12 d-flex justify-content-around my-3 mx-3 profile-backdrop">
         <h1 class="text-light">{{ profile.name }}</h1>
-        <!-- do the same as below -->
+
         <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank" class="text-light"
           title="Connect with me on LinkedIn!"> <i class="mdi mdi-linkedin fs-2"></i></a>
         <p class="text-light fs-2">{{ profile.class }}</p>
