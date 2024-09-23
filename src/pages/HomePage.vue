@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from "@/AppState.js";
+import PageNavition from "@/components/globals/PageNavition.vue";
 
 import { Account } from "@/models/Account";
 import { adsService } from "@/services/AdsService.js";
@@ -43,16 +44,7 @@ async function getAds() {
   }
 }
 
-async function changePage(pageNumber) {
-  try {
-    await postsService.changePostsPage(pageNumber)
-  }
-  catch (error) {
-    Pop.error(error);
-    Pop.meow(error)
-  }
 
-}
 
 
 
@@ -68,12 +60,12 @@ async function changePage(pageNumber) {
 
 
       <!-- Page Navigation component template -->
-
-      <div class="d-flex my-3">
+      <PageNavition />
+      <!-- <div class="d-flex my-3">
         <button @click="changePage(page - 1)" class="rounded-pill btn btn-primary mx-3">Previous</button>
         <span>Page {{ page }} of {{ totalPages }}</span>
         <button @click="changePage(page + 1)" class="rounded-pill btn btn-primary mx-3">Next</button>
-      </div>
+      </div> -->
 
       <!-- Create post form -->
 

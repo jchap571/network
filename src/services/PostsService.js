@@ -38,7 +38,7 @@ class PostsService {
   }
 
 
-  async changePostsPage(pageNumber) {
+  async changePostsPage(pageNumber, postQuery: string) {
     const response = await api.get(`/api/posts?page=${pageNumber}`)
     const newPosts = response.data
     logger.log('CHANGED POSTS PAGE', response.data)
