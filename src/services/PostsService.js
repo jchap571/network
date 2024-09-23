@@ -25,7 +25,7 @@ class PostsService {
 
 
   async searchPosts(postQuery) {
-    const response = await api.get(`search/posts?query=${postQuery}`)
+    const response = await api.get(`api/posts?query=${postQuery}`)
     AppState.postQuery = postQuery
     this.handleResponseData(response.data)
   }

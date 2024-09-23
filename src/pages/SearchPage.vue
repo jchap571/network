@@ -53,9 +53,9 @@ async function getAds() {
     <div class="card">
         <form @submit.prevent="searchPosts()">
             <div class="mb-3">
-                <label for="searchPosts" class="form-control-label">Search Posts</label>
-                <input v-model="editableQuery" type="text" name="searchPosts" id="searchPosts" class="form-control"
-                    maxlength="100" required>
+                <label for="" class="form-control-label">Search Posts</label>
+                <input v-model="editableQuery" type="text" name="query" id="query" class="form-control" maxlength="100"
+                    required>
             </div>
             <div>
                 <button class="flex-grow mb-3 bg-success rounded" type="submit">Search Posts</button>
