@@ -24,7 +24,7 @@ function toggleTheme() {
       <div class="d-flex flex-column align-items-center">
         <li>
           <!-- Search component here -->
-          <router-link :to="{ name: 'Search' }" class="btn text-light lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'Search' }" class="btn text-light lighten-30 selectable text-uppercase mt-2">
             Search <i class="mdi mdi-magnify"></i>
           </router-link>
         </li>
