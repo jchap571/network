@@ -79,6 +79,8 @@ async function getPostsByCreatorId() {
     </div>
   </div>
 
+  <PageNavition />
+
   <section class="row mx-3">
     <div v-for="post in posts" :key="post.id" class="col-md-4 my-3">
       <PostCard :postProp="post" />

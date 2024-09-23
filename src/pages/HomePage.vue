@@ -11,8 +11,7 @@ import { computed, onMounted } from "vue";
 
 const posts = computed(() => AppState.posts)
 const ads = computed(() => AppState.ads)
-const page = computed(() => AppState.page)
-const totalPages = computed(() => AppState.totalPages)
+
 
 
 

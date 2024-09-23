@@ -40,7 +40,7 @@ async function changePostsPage(pageNumber) {
         <button @click="changePostsPage(page - 1)" :disabled="page < 2"
             class="rounded-pill btn btn-primary mx-3">Previous</button>
         <span>Page {{ page }} of {{ totalPages }}</span>
-        <button @click="changePostsPage(page + 1)" :disabled="page == 40"
+        <button @click="changePostsPage(page + 1)" :disabled="page == 40 || page == totalPages"
             class="rounded-pill btn btn-primary mx-3">Next</button>
     </div>
 </template>
