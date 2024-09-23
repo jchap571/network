@@ -10,6 +10,7 @@ import { useRoute } from "vue-router";
 
 const route = useRoute()
 
+const ads = computed(() => AppState.ads)
 const profile = computed(() => AppState.activeProfile)
 const posts = computed(() => AppState.posts)
 
@@ -84,6 +85,12 @@ async function getPostsByCreatorId() {
   <section class="row mx-3">
     <div v-for="post in posts" :key="post.id" class="col-md-4 my-3">
       <PostCard :postProp="post" />
+    </div>
+
+    <div class="d-flex align-items-start col-md-4 flex-column">
+      <div v-for="ad in ads" :key="ad.id" class="col-4 card">
+        <AdCard :adProp="ad" />
+      </div>
     </div>
 
   </section>

@@ -19,7 +19,7 @@ const account = computed(() => AppState.account)
     </div>
   </div>
 
-  <!-- <PostForm /> -->
+  <PostForm />
 </template>
 
 <style scoped lang="scss">
