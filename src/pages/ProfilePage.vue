@@ -85,7 +85,7 @@ async function getAds() {
         <div class="d-flex text-center justify-content-between">
           <img :src="profile.picture" :alt="profile.name" class="profile-image">
           <i v-if="profile.graduated" class="mdi mdi-certificate-outline fs-1 text-light"></i>
-          <a v-if="profile.github" :href="profile.github" class="mdi mdi-github"></a>
+          <a v-if="profile.github" :href="profile.github" target="_blank" class="mdi mdi-github"></a>
 
         </div>
       </div>
