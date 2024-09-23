@@ -7,15 +7,6 @@ import Pop from "@/utils/Pop.js"
 
 class PostsService {
 
-
-  likePosts() {
-    throw new Error("Method not implemented.")
-  }
-
-
-
-
-
   async getAllPosts() {
     const response = await api.get('api/posts')
     logger.log('Got the posts!', response.data)
@@ -31,17 +22,14 @@ class PostsService {
   }
 
 
+
+
   async getPostsByCreatorId(profileId) {
     const response = await api.get(`api/posts?creatorId=${profileId}`)
     logger.log('Got projects for the profile', response.data)
     const newPosts = response.data.posts.map(postPOJO => new Post(postPOJO))
     AppState.posts = newPosts
   }
-
-
-
-
-
 
   async createPost(postData) {
     const response = await api.post('api/posts', postData)
@@ -58,19 +46,11 @@ class PostsService {
     AppState.posts.splice(postIndex, 1)
 
   }
-
-
-  // Need a new method for changePostsPageByProfileId needed
-
   async changePostsPage(pageNumber, postQuery) {
     const response = await api.get(`/api/posts?page=${pageNumber}`)
     logger.log('CHANGED POSTS PAGE', response.data)
     this.handleResponseData(response.data)
   }
-
-
-
-
 
   handleResponseData(responseData) {
     const newPosts = responseData.posts.map(postPOJO => new Post(postPOJO))
@@ -78,6 +58,14 @@ class PostsService {
     AppState.page = responseData.page
     AppState.totalPages = responseData.totalPages
   }
+
+
+  async likePosts(postId) {
+    const response = await api.post(`/api/posts/${postId}/like`)
+    logger.log('liked the post!', postId)
+
+  }
+
 
 
   clearPosts() {
@@ -89,6 +77,25 @@ class PostsService {
   clearSearchQuery() {
     AppState.postQuery = ''
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   // async searchPosts(postQuery) {

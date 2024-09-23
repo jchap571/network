@@ -48,6 +48,21 @@ async function deletePost() {
 }
 
 
+async function likePosts() {
+  try {
+
+    logger.log('you liked the post', props.postProp.id)
+    await postsService.likePosts(props.postProp.id)
+  }
+  catch (error) {
+    Pop.meow('You have to login to like a post!')
+    Pop.error(error);
+  }
+}
+
+
+
+
 </script>
 
 
@@ -62,13 +77,13 @@ async function deletePost() {
       <h5 class="card-title">{{ postProp.creatorName }}</h5>
       <p class="card-text fs-4">{{ postProp.body }}</p>
       <div class="">
-        <!-- FIXME format the date -->
-        <p>{{ postProp.createdAt }}
+
+        <p>{{ postProp.formattedCreatedAt }}
         </p>
-        <!-- FIXME don't show the image tag if there's no image on the post (v-if) -->
-        <img :src="postProp.imgUrl" :alt="postProp.body" class="card-img-bottom img-fluid">
+
+        <img v-if="postProp.imgUrl" :src="postProp.imgUrl" :alt="postProp.body" class="card-img-bottom img-fluid">
         <!-- FIXME don't use a tags for likes, send the id of the post you want to like (formatted correctly) in the service, look at the endpoint needed to hit for likes  -->
-        <a href="#" class="mdi mdi-heart ">{{ postProp.likes.length }}</a>
+        <button v-if="account" @click="likePosts()" class="mdi mdi-heart mb-3">{{ postProp.likes.length }}</button>
       </div>
 
       <button v-if="account && postProp.creatorId === account.id" @click="deletePost()"

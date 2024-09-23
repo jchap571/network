@@ -5,7 +5,7 @@ import { postsService } from '@/services/PostsService';
 import Pop from '@/utils/Pop';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 
-// FIXME reference search page from vue flix - just search by posts
+
 
 
 const ads = computed(() => AppState.ads)
@@ -35,6 +35,8 @@ async function searchPosts() {
 
 
 
+
+
 async function getAds() {
     try {
         await adsService.getAds()
@@ -53,7 +55,7 @@ async function getAds() {
     <div class="card">
         <form @submit.prevent="searchPosts()">
             <div class="mb-3">
-                <label for="" class="form-control-label">Search Posts</label>
+                <label for="" class="form-control-label">Search Posts or Profiles</label>
                 <input v-model="editableQuery" type="text" name="query" id="query" class="form-control" maxlength="100"
                     required>
             </div>

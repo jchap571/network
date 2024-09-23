@@ -48,15 +48,7 @@ async function getAds() {
 }
 
 
-async function likePosts() {
-  try {
-    await postsService.likePosts()
-  }
-  catch (error) {
-    Pop.meow('You have to login to like a post!')
-    Pop.error(error);
-  }
-}
+
 
 
 
