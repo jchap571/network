@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from "@/AppState.js";
+import { adsService } from "@/services/AdsService";
 import { postsService } from "@/services/PostsService.js";
 import { profilesService } from "@/services/ProfilesService.js";
 import { logger } from "@/utils/Logger.js";
@@ -17,7 +18,8 @@ const posts = computed(() => AppState.posts)
 onMounted(() => {
   getProfileById()
   getPostsByCreatorId()
-  // FIXME get ads here
+  getAds()
+
 
 })
 
@@ -48,6 +50,18 @@ async function getPostsByCreatorId() {
   catch (error) {
     Pop.meow(error);
     logger.log(error)
+  }
+}
+
+
+async function getAds() {
+  try {
+    await adsService.getAds()
+
+  }
+  catch (error) {
+    Pop.meow(error);
+    Pop.error(error);
   }
 }
 

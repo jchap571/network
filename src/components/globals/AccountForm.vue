@@ -13,7 +13,8 @@ const editableAccountData = ref({
   coverImg: '',
   linkedin: '',
   graduated: false,
-
+  github: '',
+  class: '',
 
 })
 
@@ -65,11 +66,22 @@ async function updateAccount() {
       <label for="accountBio" class="form-label">Bio</label>
       <textarea v-model="editableAccountData.bio" name="accountBio" id="accountBio" class="form-control"
         maxlength="1000"></textarea>
+      <div class="mb-3">
+        <label for="accountGithub" class="form-label me-3">Do you have a github?</label>
+        <input class="form-control" v-model="editableAccountData.github" type="url" name="accountGithub"
+          id="accountGithub">
+      </div>
+      <div class="mb-3">
+        <label for="accountClass" class="form-label me-3">What class are you in?</label>
+        <input class="form-control" v-model="editableAccountData.class" type="text" name="accountClass"
+          id="accountClass">
+      </div>
     </div>
     <div class="mb-3">
       <label for="accountGraduated" class="form-label me-3">Have You Graduated?</label>
       <input v-model="editableAccountData.graduated" type="checkbox" name="accountGraduated" id="accountGraduated">
     </div>
+
     <!-- FIXME add inputs for github and class -->
     <div>
       <button class="flex-grow mb-3 bg-success" type="submit">Save Changes</button>

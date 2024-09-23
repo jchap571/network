@@ -1,7 +1,24 @@
 <script setup>
 import Navbar from './components/Navbar.vue';
 import { AppState } from './AppState.js';
+import Pop from './utils/Pop';
+import { adsService } from './services/AdsService';
 // FIXME add get ads here so that will fix it everywhere
+
+
+
+
+
+async function getAds() {
+  try {
+    await adsService.getAds()
+
+  }
+  catch (error) {
+    Pop.meow(error);
+    Pop.error(error);
+  }
+}
 </script>
 
 <template>
@@ -10,6 +27,9 @@ import { AppState } from './AppState.js';
   </header>
   <main>
     <router-view />
+
+
+
   </main>
   <footer class="bg-primary text-light">
 
