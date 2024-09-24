@@ -28,7 +28,8 @@ class PostsService {
     const response = await api.get(`api/posts?creatorId=${profileId}`)
     logger.log('Got projects for the profile', response.data)
     const newPosts = response.data.posts.map(postPOJO => new Post(postPOJO))
-    AppState.posts = newPosts
+    // AppState.posts = newPosts
+    this.handleResponseData(response.data)
   }
 
   async createPost(postData) {
@@ -49,6 +50,11 @@ class PostsService {
   async changePostsPage(pageNumber, postQuery) {
     const response = await api.get(`/api/posts?page=${pageNumber}`)
     logger.log('CHANGED POSTS PAGE', response.data)
+    this.handleResponseData(response.data)
+  }
+
+  async changePostsPageById(pageNumber, profileId) {
+    const response = await api.get(`/api/profiles/${profileId}/posts?page=${pageNumber}`)
     this.handleResponseData(response.data)
   }
 
